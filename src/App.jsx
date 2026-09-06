@@ -180,15 +180,15 @@ function App() {
 
             {/* Image overlapping the circle to the left */}
             <div className="relative w-full h-full flex items-center justify-center z-20 -ml-28 md:-ml-48">
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 <motion.img 
                   key={heroImageIndex}
                   src={heroImages[heroImageIndex]}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="w-[320px] h-[320px] md:w-[460px] md:h-[460px] object-cover object-center drop-shadow-2xl"
+                  initial={{ opacity: 0, scale: 0.9, x: 30 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 1.1, x: -30 }}
+                  transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="absolute w-[320px] h-[320px] md:w-[460px] md:h-[460px] object-cover object-center drop-shadow-2xl"
                   alt="Prenda rotativa"
                 />
               </AnimatePresence>
