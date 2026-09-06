@@ -216,30 +216,27 @@ function App() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+            variants={fadeUpVariant}
+            className="relative w-full overflow-hidden mt-8 py-4"
           >
-            {colegios.map((colegio, index) => (
-              <motion.div 
-                key={index} 
-                variants={fadeUpVariant}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-white border border-gray-200 px-6 py-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(230,34,43,0.1)] hover:border-holland-red/30 transition-all duration-300 flex items-center gap-4 group cursor-default"
-              >
-                <div className="bg-gray-50 text-gray-400 p-3 rounded-full group-hover:bg-holland-red group-hover:text-white transition-colors duration-300 flex-shrink-0">
-                  <GraduationCap size={22} />
+            {/* Gradient masks for fading effect at the edges */}
+            <div className="absolute top-0 left-0 w-16 md:w-48 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+            {/* Marquee Track - Contains 2 sets of items to loop smoothly */}
+            <div className="flex w-max animate-marquee gap-6 md:gap-10 items-center">
+              {[...colegios, "Y muchos más...", ...colegios, "Y muchos más..."].map((colegio, index) => (
+                <div 
+                  key={index} 
+                  className="flex items-center gap-4 bg-white border border-gray-100 px-8 py-4 md:py-5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(230,34,43,0.12)] hover:border-holland-red/20 transition-all duration-300 cursor-default group"
+                >
+                  <div className="bg-gray-50 text-gray-400 p-2.5 rounded-full group-hover:bg-holland-red group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                    {colegio === "Y muchos más..." ? <ChevronRight size={20} /> : <GraduationCap size={20} />}
+                  </div>
+                  <span className="font-bold text-gray-700 group-hover:text-gray-900 transition-colors whitespace-nowrap text-sm md:text-base">{colegio}</span>
                 </div>
-                <span className="font-bold text-gray-700 group-hover:text-gray-900 transition-colors text-sm md:text-base">{colegio}</span>
-              </motion.div>
-            ))}
-            <motion.div 
-              variants={fadeUpVariant}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-gradient-to-br from-holland-red to-holland-darkRed text-white px-6 py-5 rounded-2xl shadow-[0_10px_30px_rgba(230,34,43,0.2)] hover:shadow-[0_15px_40px_rgba(230,34,43,0.3)] transition-all duration-300 flex items-center justify-center gap-3 cursor-default"
-            >
-              <span className="font-bold text-sm md:text-base">Y muchos más...</span>
-              <ChevronRight size={20} className="opacity-80" />
-            </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
