@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Clock, CreditCard, ShoppingBag, Phone, Menu, X, ChevronRight } from 'lucide-react';
+import { MapPin, Clock, CreditCard, ShoppingBag, Phone, Menu, X, ChevronRight, GraduationCap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import schoolUniform from './assets/school_uniform_1.jpg';
 import clinicalUniform from './assets/clinical_uniform_1.jpg';
@@ -217,24 +217,28 @@ function App() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="flex flex-wrap justify-center gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
           >
             {colegios.map((colegio, index) => (
               <motion.div 
                 key={index} 
                 variants={fadeUpVariant}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-gray-50 border border-gray-100 px-6 py-4 rounded-xl shadow-sm hover:shadow-md hover:border-holland-red/30 transition-all cursor-default group flex items-center justify-center"
+                className="bg-white border border-gray-200 px-6 py-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(230,34,43,0.1)] hover:border-holland-red/30 transition-all duration-300 flex items-center gap-4 group cursor-default"
               >
-                <span className="font-bold text-gray-600 group-hover:text-holland-red transition-colors text-sm md:text-base">{colegio}</span>
+                <div className="bg-gray-50 text-gray-400 p-3 rounded-full group-hover:bg-holland-red group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                  <GraduationCap size={22} />
+                </div>
+                <span className="font-bold text-gray-700 group-hover:text-gray-900 transition-colors text-sm md:text-base">{colegio}</span>
               </motion.div>
             ))}
             <motion.div 
               variants={fadeUpVariant}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-holland-red text-white px-6 py-4 rounded-xl shadow-[0_4px_20px_rgba(230,34,43,0.2)] transition-all cursor-default flex items-center justify-center"
+              className="bg-gradient-to-br from-holland-red to-holland-darkRed text-white px-6 py-5 rounded-2xl shadow-[0_10px_30px_rgba(230,34,43,0.2)] hover:shadow-[0_15px_40px_rgba(230,34,43,0.3)] transition-all duration-300 flex items-center justify-center gap-3 cursor-default"
             >
               <span className="font-bold text-sm md:text-base">Y muchos más...</span>
+              <ChevronRight size={20} className="opacity-80" />
             </motion.div>
           </motion.div>
         </div>
