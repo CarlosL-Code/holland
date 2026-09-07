@@ -78,13 +78,13 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.5 }}
           className="w-full md:w-1/2 lg:w-2/5 flex justify-center items-center relative min-h-[300px] sm:min-h-[400px] mt-8 md:mt-0 transform scale-90 sm:scale-100"
         >
-          <div className="absolute w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[360px] md:h-[360px] bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-2xl animate-pulse" style={{ animationDuration: '4s' }}></div>
+          <div className="absolute w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[360px] md:h-[360px] bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-2xl animate-pulse z-0" style={{ animationDuration: '4s' }}></div>
           
-          <img src={iconoChileno} alt="Sello Nacional" className="absolute w-[220px] sm:w-[280px] md:w-[380px] opacity-80 z-0 drop-shadow-lg" />
+          <div className="absolute w-[180px] h-[180px] sm:w-[230px] sm:h-[230px] md:w-[310px] md:h-[310px] bg-white rounded-full shadow-2xl border-4 border-white/50 z-10"></div>
+          
+          <img src={iconoChileno} alt="Sello Nacional" className="absolute w-[220px] sm:w-[280px] md:w-[380px] opacity-80 z-20 drop-shadow-lg" />
 
-          <div className="absolute w-[180px] h-[180px] sm:w-[230px] sm:h-[230px] md:w-[310px] md:h-[310px] bg-white rounded-full shadow-2xl border-4 border-white/50 z-0"></div>
-
-          <div className="relative flex items-center justify-center z-10 -ml-12 sm:-ml-28 md:-ml-48">
+          <div className="relative flex items-center justify-center z-30 -ml-12 sm:-ml-28 md:-ml-48">
             <AnimatePresence mode="wait">
               <motion.img 
                 key={heroImageIndex}
